@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Café</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+
+    <style>
+        /*
+        ======================================================
+        1. VIDEO BACKGROUND STYLES
+        ======================================================
+        */
+        .video-background {
+            /* Position it fixed so it covers the entire viewport */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            /* Ensure the video is behind all content */
+            z-index: -1;
+            /* Optional: Add a subtle overlay to help text readability */
+            background-color: rgba(0, 0, 0, 0.4); 
+            overflow: hidden; /* Hide any overflow */
+        }
+
+        .video-background video {
+            /* This is the key property: scales to cover the container */
+            object-fit: cover;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /*
+        ======================================================
+        2. BASE STYLES & LAYOUT
+        ======================================================
+        */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            min-height: 100vh;
+        }
+
+        /*
+        ======================================================
+        3. UNIFIED HEADER STYLES (Copied from other pages)
+        ======================================================
+        */
+        header { /* Renamed from .navbar to header */
+            background: #3c2f2f;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 0 0 20px 20px;
+            /* Ensure it stays at the top but allows other content to scroll */
+            position: sticky;
+            top: 0; 
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px; /* Adjusted gap for uniformity */
+            color: white;
+            font-size: 24px; /* Adjusted font size for uniformity */
+            font-weight: bold;
+        }
+
+        .logo-icon {
+            width: 35px; /* Adjusted size for uniformity */
+            height: auto;
+            color: white;
+        }
+        
+        /* Unified Nav Links */
+        nav a {
+            color: white;
+            margin: 0 20px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 18px; /* Adjusted font size for uniformity */
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .globe { 
+            color: white; 
+            font-size: 20px; 
+        }
+
+        /* Active link styling for HOME page */
+        nav a[href="index.html"] {
+            position: relative;
+            color: #b89f7c;
+        }
+
+        nav a[href="index.html"]::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            bottom: -10px;
+            left: 0;
+            background-color: #b89f7c;
+            border-radius: 2px;
+        }
+
+
+        /*
+        ======================================================
+        4. HERO SECTION STYLES
+        ======================================================
+        */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.1); 
+        }
+
+        .hero-content {
+            padding-bottom: 50px;
+            z-index: 2; /* Ensure content sits above the video */
+        }
+
+        .hero h1 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.9);
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+        }
+
+        .cta-btn-link {
+            text-decoration: none;
+        }
+
+        .cta-btn {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+
+            color: black;
+            padding: 18px 45px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 12px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+
+            font-size: 1.6rem;
+            font-family: 'Permanent Marker', cursive;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            text-shadow: none;
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            background: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 6px 35px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+                flex-direction: column;
+            }
+            nav {
+                display: flex; 
+                flex-direction: column; 
+                gap: 5px; 
+                margin-top: 10px;
+            }
+            nav a {
+                margin: 0 10px;
+                font-size: 1rem;
+            }
+            .globe {
+                display: none; /* Hide globe on mobile to save space */
+            }
+            .hero {
+                padding-top: 100px;
+            }
+            .cta-btn {
+                padding: 15px 30px;
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="https://www.dropbox.com/scl/fi/gnxur03stufkak1fj7nx6/kapkap_20251125145930915_sys.mp4?rlkey=htkf2l89i85cp1r4qanfkxhhm&dl=1" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <header>
+        <div class="logo">
+            <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19L5 12L12 5L19 12L12 19Z"/>
+                <path d="M5 12L12 19"/>
+                <path d="M19 12L12 5"/>
+                <path d="M12 5V19"/>
+            </svg>
+            <span>Quantum Café</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Menu</a> 
+            <a href="about.html">About Us</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <i class="fas fa-globe globe"></i>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Quantum Coffee</h1>
+            <p>Awaken all your senses with every cup.</p>
+
+            <a href="products.html" class="cta-btn cta-btn-link">
+                HAVE A COFFEE
+            </a>
+        </div>
+    </section>
+
+</body>
+</html>

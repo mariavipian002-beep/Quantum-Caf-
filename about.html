@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quantum Café - About Us</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    /* * global styles copied from products.html for consistency 
+     */
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'segoe ui', tahoma, geneva, verdana, sans-serif;
+      /* Using the provided background image */
+      background: url('https://www.dropbox.com/scl/fi/9uonxpyfp5waswo2ygzdb/top-view-cup-tea-with-choco-cookies-dark-table-tea-cookie-biscuit.jpg?rlkey=n540qjo0890pqo33fube3t9yg&st=ylb3wwgt&dl=1') no-repeat center center fixed;
+      background-size: cover; /* ensures the image covers the entire background */
+      color: #4a3c31;
+    }
+    header {
+      background: #3c2f2f;
+      padding: 15px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-radius: 0 0 20px 20px;
+      position: sticky; /* Added sticky position for consistency */
+      top: 0;
+      z-index: 10;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: white;
+      font-size: 24px;
+      font-weight: bold;
+    }
+    .logo-icon {
+        width: 35px;
+        height: auto;
+        color: white;
+    }
+    nav a {
+      color: white;
+      margin: 0 20px;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 18px;
+    }
+    nav a:hover { opacity: 0.8; }
+    .globe { color: white; font-size: 20px; }
+    
+    main {
+      max-width: 1200px; /* slightly smaller for prose content */
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    h1 {
+      font-size: 48px;
+      margin-bottom: 60px;
+      color: #ffffff; /* changed for better contrast against dark background */
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.5); /* added for better readability */
+    }
+    footer { margin: 120px 0 40px; text-align:center; color:#ffffff; font-size:14px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+
+    /* * about us specific styles 
+     */
+    .about-content {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        text-align: left;
+    }
+
+    .section {
+        background: rgba(255, 255, 255, 0.9); /* slightly transparent white for readability */
+        padding: 40px;
+        border-radius: 25px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2); /* stronger shadow for contrast */
+    }
+
+    .section-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 25px;
+        color: #5d4037;
+    }
+
+    .section-header i {
+        font-size: 32px;
+        color: #b89f7c; /* accent color from background */
+    }
+
+    .section-header h2 {
+        font-size: 32px;
+        margin: 0;
+        font-weight: 600;
+    }
+
+    .section p {
+        font-size: 18px;
+        line-height: 1.7;
+        color: #6d4c41;
+        margin-bottom: 20px;
+    }
+
+    .highlight-box {
+        background: #f0e8d9;
+        padding: 25px;
+        border-left: 5px solid #b89f7c;
+        border-radius: 0 10px 10px 0;
+        margin: 30px 0;
+        font-style: italic;
+        color: #4a3c31;
+    }
+
+    .highlight-box strong {
+        font-weight: bold;
+        color: #5d4037;
+    }
+
+    /* team section grid */
+    .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 30px;
+        margin-top: 30px;
+    }
+
+    .team-member {
+        text-align: center;
+    }
+
+    .team-member img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 15px;
+        border: 4px solid #b89f7c;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .team-member h4 {
+        font-size: 20px;
+        color: #5d4037;
+        margin-bottom: 5px;
+    }
+
+    .team-member p {
+        font-size: 16px;
+        color: #8d6e63;
+        margin: 0;
+        font-style: italic;
+    }
+
+    /* * suggested improvement: active navigation link */
+
+    /* add a visual cue to the active page in the navigation */
+    nav a[href="about.html"] {
+        position: relative;
+        color: #b89f7c; /* change color of the active link */
+    }
+
+    /* create an underline effect for the active link */
+    nav a[href="about.html"]::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        bottom: -10px; /* position below the link text */
+        left: 0;
+        background-color: #b89f7c; /* accent color */
+        border-radius: 2px;
+    }
+
+    /* mobile adaptations */
+    @media (max-width: 768px) {
+        header { 
+            padding: 15px 20px; 
+            flex-direction: column; /* Stack header items */
+        }
+        .logo { font-size: 20px; }
+        nav { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 5px; 
+            margin-top: 10px; 
+            text-align: center;
+        }
+        nav a { margin: 0; }
+        .globe {
+            display: none; /* Hide globe on mobile to save space */
+        }
+        h1 { font-size: 36px; margin-bottom: 40px; }
+        .section { padding: 30px 20px; }
+        .section-header h2 { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <svg class="logo-icon" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24" fill="none" stroke="currentcolor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 19L5 12L12 5L19 12L12 19Z"/>
+        <path d="M5 12L12 19"/>
+        <path d="M19 12L12 5"/>
+        <path d="M12 5V19"/>
+    </svg>
+    Quantum Café
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="products.html">Menu</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+  <i class="fas fa-globe globe"></i>
+</header>
+
+<main>
+  <h1>Exploring the Quantum Realm of Flavor</h1>
+
+  <div class="about-content">
+    
+    <div class="section">
+        <div class="section-header">
+            <i class="fas fa-atom"></i>
+            <h2>Our Philosophical Brew</h2>
+        </div>
+        <p>The Quantum Café was founded on a simple, yet profound principle: to create a space where the complexity of the universe meets the simplicity of a perfect cup of coffee. We believe that just as matter exists in multiple states simultaneously (superposition), a single café can exist as a center for both **deep thought** and **casual comfort**.</p>
+        <p>Every ingredient, from our high-altitude Ethiopian Yirgacheffe beans to our locally-sourced milk, is chosen with the meticulous care of a particle physicist preparing an experiment. Our mission is to ensure every visit shifts your state into pure satisfaction.</p>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <i class="fas fa-flask"></i>
+            <h2>The Schrödinger's Sip</h2>
+        </div>
+        <p>Our signature approach is what we call **Schrödinger's Sip**. When you order a drink, it exists in a state of superposition—it is both the best coffee you have ever had, and an experience you haven't yet realized is perfect, until you take that first taste.</p>
+        <div class="highlight-box">
+            <p><strong>Heisenberg's Uncertainty Principle:</strong> The more precisely you try to observe our staff making your latte art, the less certain you are about how the rest of your day will go (because you'll want to stay here).</p>
+        </div>
+        <p>We invite you to step away from the deterministic, classical world and embrace the quantum possibilities of our menu. Try a 'Dark Matter Drip' or our famous 'Entanglement Espresso' and observe your reality change.</p>
+    </div>
+
+    <div class="section">
+        <div class="section-header">
+            <i class="fas fa-users"></i>
+            <h2>The Core Particles (Our Team)</h2>
+        </div>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="https://www.dropbox.com/scl/fi/g5r8296umyu09db76zv8h/black-woman-scientist-student-chemist-600nw-1204455817.jpg?rlkey=pzy91wgcgddyv33tyeaaiyowj&st=9ikr1x5e&dl=1" alt="Aisha"/>
+                <h4>Aisha Mwangi</h4>
+                <p>Lead Barista & Flavor Chemist</p>
+            </div>
+            <div class="team-member">
+                <img src="https://www.dropbox.com/scl/fi/7h2c9se48tt09lm5hcxux/pastry-chef-holding-small-pastry.jpg?rlkey=17j7c727zf6kn8fliomc5glzg&st=3pchoddb&dl=1" alt="Elias"/>
+                <h4>Elias Kiprop</h4>
+                <p>Head Baker & Pastry Engineer</p>
+            </div>
+            <div class="team-member">
+                <img src="https://www.dropbox.com/scl/fi/frszbdf5ptcq4cw2msw5f/call-center-contact-and-smile-with-portrait-of-black-woman-in-telemarketing-customer-support.jpg?rlkey=lrojpl93hk29tvq0vd7dc6w66&st=cnnybcac&dl=1" alt="Naomi"/>
+                <h4>Naomi Wanjiku</h4>
+                <p>Customer Experience Specialist</p>
+            </div>
+            <div class="team-member">
+                <img src="https://www.dropbox.com/scl/fi/6oz88h0g3g5eqr75md364/happy-black-manager-with-crossed-arms-in-distribution-warehouse.jpg?rlkey=1x7jgiwbtl2oil6fcgp3brx99&st=5x2zvu6j&dl=1" alt="David"/>
+                <h4>David Jones</h4>
+                <p>Logistics & Supply Chain Manager</p>
+            </div>
+        </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  © 2025 Quantum Café • All rights reserved
+</footer>
+
+</body>
+</html>
